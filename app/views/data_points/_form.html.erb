@@ -15,7 +15,8 @@
   <label class="label">Point Type</label>
     <p class="control">
       <span class="select">
-        <select>
+        <select id="hey" name="data_point[point_type]">
+          <option></option>
           <% DataPoint::POINT_TYPES.each do |x| %>
             <option><%= x %></option>
           <% end %>
@@ -24,15 +25,12 @@
       </span>
     </p>
   </div>
-  <div class="container">
-    <div class="inner first">Hello</div>
-  </div>
   <div class="field">
-    <%= f.label :point_value %><br>
+    <label id="value-label">---</label><br />
     <%= f.number_field :point_value %>
   </div>
   <div class="field">
-    <%= f.label :aux_data %><br>
+    <label id="aux-label">---</label><br>
     <%= f.text_area :aux_data %>
   </div>
   <div class="actions">
@@ -41,17 +39,28 @@
 <% end %>
 
 <script>
-$("#data_point_point_type").change(function () {
-  var selected = $('#data_point_point_type').val();
+$("#hey").change(function () {
+  var selected = $('#hey').val();
   switch(selected){
-    case "Sales":
-      $( "div.inner" ).replaceWith( "How many outstanding proposals are there?" );
+    case "Proposals":
+      $( "#value-label" ).html("How many outstanding proposals are there?");
+      $( "#aux-label" ).html("Which ones?");
       break;
-    case "Implementation":
-      $( "div.inner" ).replaceWith( "prob wont work" );
+    case "Implementations":
+      $( "#value-label" ).html("How many Implementations need to be done?");
+      $( "#aux-label" ).html("Which ones?");
       break;
-    case "Ongoing":
-      $( "div.inner" ).replaceWith( "did work" );
+    case "GitHub Issues":
+      $( "#value-label" ).html("How many issues are there currently?");
+      $( "#aux-label" ).html("What are the priorities?");
+      break;
+    case "Bills Overdue":
+      $( "#value-label" ).html("How many outstanding bills are there?");
+      $( "#aux-label" ).html("Which clients?");
+      break;
+    case "Calls Made":
+      $( "#value-label" ).html("How many calls have we made this week?");
+      $( "#aux-label" ).html("What are the issues?");
       break;
   }
 });

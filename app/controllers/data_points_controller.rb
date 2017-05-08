@@ -21,13 +21,17 @@ class DataPointsController < ApplicationController
 
     respond_to do |format|
       if @data_point.save
-        format.html { redirect_to @data_point, notice: 'Data point was successfully created.' }
+        format.html { redirect_to data_points_url, notice: 'Data point was successfully created.' }
         format.json { render :show, status: :created, location: @data_point }
       else
         format.html { render :new }
         format.json { render json: @data_point.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def dump
+    render json: DataPoint.dump, status: :ok
   end
 
   private
