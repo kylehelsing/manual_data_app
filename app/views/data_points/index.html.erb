@@ -1,27 +1,29 @@
-<p id="notice"><%= notice %></p>
+  <br>
+  <h1>All Data Points</h1>
 
-<h1>Listing Data Points</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Point type</th>
-      <th>Point value</th>
-      <th>Aux data</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @data_points.each do |data_point| %>
-      <tr>
-        <td><%= data_point.point_type %></td>
-        <td><%= data_point.point_value %></td>
-        <td><%= data_point.aux_data %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Data point', new_data_point_path %>
+  <%= link_to 'New Data point', new_data_point_path, class: 'button is-info' %>
+  <br>
+  <br>
+  <% @data_points.each do |data_point| %>
+    <div class="card">
+      <header class="card-header fun">
+        <p class="card-header-title" style="color: #fff;">
+          <%= data_point.point_type %>
+        </p>
+        <a class="card-header-icon">
+          <span class="icon">
+            <i class="fa fa-angle-down"></i>
+          </span>
+        </a>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <h4><strong>Value:</strong> <%= data_point.point_value %> </h4>
+          <h4><strong>Aux Data:</strong> <br> <%= data_point.aux_data %></h4>
+          <br>
+          <small><%= data_point.created_at.strftime("%I:%M %b %d, %Y") %></small>
+        </div>
+      </div>
+    </div>
+    <br>
+  <% end %>
