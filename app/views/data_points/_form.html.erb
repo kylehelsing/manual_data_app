@@ -58,6 +58,18 @@ $("#hey").change(function () {
       $( "#value-label" ).html("How many outstanding bills are there?");
       $( "#aux-label" ).html("Which clients?");
       break;
+    case "Clients Behind":
+      $( "#value-label" ).html("How many clients are behind on data?");
+      $( "#aux-label" ).html("Which clients?");
+      break;
+    case "Priorities":
+      $( "#value-label" ).html("N/A");
+      $( "#aux-label" ).html("What are the current company priorities, seperated by commas");
+      break;
+    case "Upcoming Events":
+      $( "#value-label" ).html("N/A");
+      $( "#aux-label" ).html("What are some upcoming important dates? (Company outings or important demos etc)");
+      break;
     case "Calls Made":
       $( "#value-label" ).html("How many calls have we made this week?");
       $( "#aux-label" ).html("What are the issues?");
