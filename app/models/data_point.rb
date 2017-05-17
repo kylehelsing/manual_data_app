@@ -1,5 +1,5 @@
 class DataPoint < ActiveRecord::Base
-  POINT_TYPES = ["Proposals", "Implementations", "GitHub Issues", "Bills Overdue", "Calls Made"]
+  POINT_TYPES = ["Proposals", "Implementations", "GitHub Issues", "Bills Overdue", "Calls Made", "Clients Behind", "Priorities", "Upcoming Events"]
 
   def self.dump
     recent = Hash.new
